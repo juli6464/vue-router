@@ -1,15 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
-import Chats from '../views/ChatsView.vue';
+// import Chats from '../views/ChatsView.vue';
 
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    // {
+    //   path: '/home',
+    //   redirect: { name: 'home' }
+    // },
     {
       path: '/', // Home page
       name: 'home',
       component: HomeView, // HomeView es el componente que se mostrará en la ruta '/'
+      alias: ['/home']
     },
     {
       path: '/session',
@@ -18,6 +23,7 @@ const router = createRouter({
       children: [
         {
           path: '',
+          name: 'sessions',
           components: {
             default: () => import('../views/LoginView.vue'),
             register: () => import('../views/RegisterView.vue'),
