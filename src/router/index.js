@@ -8,10 +8,26 @@ const router = createRouter({
   routes: [
     {
       path: '/', // Home page
-    component: HomeView, // HomeView es el componente que se mostrará en la ruta '/'
+      name: 'home',
+      component: HomeView, // HomeView es el componente que se mostrará en la ruta '/'
+    },
+    {
+      path: '/session',
+      name: 'session',
+      component: () => import('../views/SessionView.vue'),
+      children: [
+        {
+          path: '',
+          components: {
+            default: () => import('../views/LoginView.vue'),
+            register: () => import('../views/RegisterView.vue'),
+          }
+        }
+      ]
     },
     {
       path: '/about',
+      name: 'about',
       component: () => import('../views/AboutView.vue'),
     },
     {
