@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 export default {
   data() {
     return {
@@ -7,9 +7,23 @@ export default {
   },
   methods: {
     iniciar() {
-      this.$router.go(-1)
+      this.$router.push({name: 'about'})
     }
   }
+}
+</script> -->
+
+<!--composition api-->
+<script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+const username = ref()
+
+const router = useRouter()
+
+function iniciar() {
+
+  router.push({name: 'about'})
 }
 </script>
 

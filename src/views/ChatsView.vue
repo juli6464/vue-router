@@ -13,7 +13,7 @@
     </div>
 </template>
 
-<script>
+<!-- <script>
 export default {
     data() {
         return {
@@ -37,4 +37,26 @@ export default {
         )
     },
 }
+</script> -->
+
+<!--composition api-->
+<script setup>
+import { ref, watch } from 'vue'
+import { useRoute } from 'vue-router';
+const chats = ref()
+
+const route = useRoute()
+
+watch(
+    () => route.params,
+    (val) => {
+    console.log('update params', val)
+    chats.value = [                    
+        { id: 1, name: 'ximena'},
+        { id: 2, name: 'pepeson'},
+        { id: 3, name: 'juan'}
+    ]
+}, {
+    immediate: true
+})
 </script>
