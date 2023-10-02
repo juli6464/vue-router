@@ -17,12 +17,24 @@
 export default {
     data() {
         return {
-            chats: [
-                { id: 1, name: 'ximena'},
-                { id: 2, name: 'pepeson'},
-                { id: 3, name: 'juan'}
-            ]
+            chats: []
         }
-    }
+    },
+
+    created() {
+        this.$watch(
+            () => this.$route.params,
+            (val) => {
+                console.log('update params', val)
+                this.chats = [                    
+                    { id: 1, name: 'ximena'},
+                    { id: 2, name: 'pepeson'},
+                    { id: 3, name: 'juan'}
+                ]
+            },
+            { immediate: true }
+
+        )
+    },
 }
 </script>
